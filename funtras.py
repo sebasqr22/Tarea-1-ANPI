@@ -9,11 +9,11 @@ pi = 3.14159265358979323846
 
 #------------- FUNCIONES GLOBALES-------------
 def factorial(x):
+
     if x==0 or x==1:
         return 1
     else:
         return x * factorial(x-1)
-
 def expresion(expre):
     funcion = eval("lambda n, a:" + expre)
     return funcion
@@ -39,21 +39,13 @@ def generar_resultado(expresion, a):
 def div_t(x):
     return x**-1
 
-def sin_t(x): #no se porque pero no me esta sirviendo
-    suma = 0
-    primera_parte = "(-1)**n"
-    segunda_parte = "(a**((2*n) + 1)) * (div_t(factorial((2*n) + 1)))"
-    funcion = expresion(f"{primera_parte} * {segunda_parte}")
-    for n in range(iteracionesMaximas):
-        sk = funcion(n, x)
-        sk_mas_uno = sk + funcion(n+1, x)
+def sin_t(x): #SIGUE ESTANDO MAL, YA LE PREGUNTE AL PROFE
+    parte1 = "(-1)**n"
+    parte2 = "a**(2*n+1)"
+    parte3 = "div_t(factorial(2*n+1))"
+    funcion = expresion(f"{parte1} * ({parte2} * {parte3})")
 
-        if medir_tolerancia(sk, sk_mas_uno):
-            break
-
-        suma += sk
-    return suma
-
+    return generar_resultado(funcion, x)
 
 def tan_t(x):
     pass
@@ -76,8 +68,28 @@ def root_t(x, y):
     pass
 
 def atan_t(x):
-    pass
+    parte1 = "(-1)**n"
+    antes = "pi * div_t(2)"
 
+    if x >= -1 or x <= 1:
+        parte2 = "a**(2*n+1)"
+        parte3 = "div_t(2*n+1)"
+        funcion = expresion(f"{parte1} * ({parte2} * {parte3})")
+
+        return generar_resultado(funcion, x)
+
+    elif x > 1:
+        parte2 = "div_t((2*n+1) * a**(2*n+1))"
+        funcion = expresion(f"{antes}-({parte1} * {parte2})")
+
+        return generar_resultado(funcion, x)
+
+    else:
+        parte2 = "div_t((2*n+1) * a**(2*n+1))"
+        funcion = expresion(f"-{antes}-({parte1} * {parte2})")
+
+        return generar_resultado(funcion, x)
+print(atan_t(pi))
 def sec_t(x):
     pass
 
@@ -99,7 +111,15 @@ def cos_t(x): #tampoco sirve
     return generar_resultado(funcion, x)
 
 def ln_t(x):
-    pass
+    parte1_antes = "2*(a-1)"
+    parte2_antes = "div_t(a+1)"
+
+    parte1 = "div_t(2*n+1)"
+    parte2 = "a-1"
+    parte3 = "div_t(a+1)"
+    funcion = expresion(f"({parte1_antes} * {parte2_antes}) * (({parte1}) * ({parte2} * {parte3})**(2*n))")
+
+    return generar_resultado(funcion, x)
 
 def power_t(x,y):
     pass
@@ -124,7 +144,6 @@ def asin_t(x):
 
     return generar_resultado(funcion, x)
 
-print(asin_t(0.5))
 
 def acos_t(x):
     pass
