@@ -105,13 +105,26 @@ def power_t(x,y):
     pass
 
 def cosh_t(x):
-    pass
+    parte1 = "a**(2*n)"
+    parte2 = "div_t(factorial(2*n))"
+    funcion = expresion(f"{parte1} * {parte2}")
+
+    return generar_resultado(funcion, x)
 
 def sqrt_t(x):
     pass
 
 def asin_t(x):
-    pass
+    parte1 = "factorial(2*n)"
+    parte2 = "div_t(4**n)"
+    parte3 = "div_t(factorial(n)**2)"
+    parte4 = "div_t(2*n + 1)"
+    parte5 = "a**(2*n+1)"
+    funcion = expresion(f"({parte1} * {parte2} * {parte3} * {parte4}) * {parte5}")
+
+    return generar_resultado(funcion, x)
+
+print(asin_t(0.5))
 
 def acos_t(x):
     pass
