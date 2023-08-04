@@ -47,17 +47,15 @@ def exp_t(x):
     resultado = 0
 
     for i in range(iteracionesMaximas):
-        actual = (x**i) * div_t(factorial(i))
-        unaMas = (x**(i+1)) * div_t(factorial(i+1))
-        print(actual, unaMas)
-        if abs(unaMas - actual) < tolerancia:
+        sk = (x**i) * div_t(factorial(i))
+        sk_mas_uno = sk + (x**(i+1)) * div_t(factorial(i+1))
+
+        if abs(sk_mas_uno - sk) < tolerancia:
             break
 
-        resultado += actual
-
+        resultado += sk
 
     return resultado
-print(exp_t(2))
 
 def cos_t(x):
     pass
