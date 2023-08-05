@@ -43,7 +43,7 @@ def generar_resultado(expresion, a):
 def div_t(x):
     return x**-1
 
-def sin_t(x): #SIGUE ESTANDO MAL, YA LE PREGUNTE AL PROFE
+def sin_t(x):
     parte1 = "(-1)**n"
     parte2 = "a**(2*n+1)"
     parte3 = "div_t(factorial(2*n+1))"
@@ -55,7 +55,7 @@ def tan_t(x):
     return sin_t(x) * div_t(cos_t(x))
 
 def log_t(x, y):
-    pass
+    return ln_t(x) * div_t(ln_t(y))
 
 def sinh_t(x):
     parte1 = "a**(2*n + 1)"
@@ -106,7 +106,7 @@ def exp_t(x):
     return generar_resultado(funcion, x)
 
 
-def cos_t(x): #tampoco sirve
+def cos_t(x): 
     parte1 = "(-1)**n"
     parte2 = "a**(2*n)"
     parte3 = "div_t(factorial(2**n))"
