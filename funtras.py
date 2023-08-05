@@ -9,11 +9,15 @@ pi = 3.14159265358979323846
 
 #------------- FUNCIONES GLOBALES-------------
 def factorial(x):
-
     if x==0 or x==1:
         return 1
     else:
-        return x * factorial(x-1)
+        resultado = 1
+        while x > 1:
+            resultado *= x
+            x -= 1
+        return resultado
+
 def expresion(expre):
     funcion = eval("lambda n, a:" + expre)
     return funcion
@@ -48,7 +52,7 @@ def sin_t(x): #SIGUE ESTANDO MAL, YA LE PREGUNTE AL PROFE
     return generar_resultado(funcion, x)
 
 def tan_t(x):
-    pass
+    return sin_t(x) * div_t(cos_t(x))
 
 def log_t(x, y):
     pass
@@ -62,10 +66,10 @@ def sinh_t(x):
 
 
 def tanh_t(x):
-    pass
+    return sin_t(x) * div_t(cosh_t(x) + 1)
 
 def root_t(x, y):
-    pass
+    return power_t(x, div_t(y))
 
 def atan_t(x):
     parte1 = "(-1)**n"
@@ -90,11 +94,12 @@ def atan_t(x):
 
         return generar_resultado(funcion, x)
 print(atan_t(pi))
+
 def sec_t(x):
-    pass
+    return div_t(cos_t(x))
 
 def csc_t(x):
-    pass
+    return div_t(sin_t(x))
 
 def exp_t(x):
     funcion = expresion("a**n * div_t(factorial(n))")
@@ -122,7 +127,7 @@ def ln_t(x):
     return generar_resultado(funcion, x)
 
 def power_t(x,y):
-    pass
+    return x**y
 
 def cosh_t(x):
     parte1 = "a**(2*n)"
@@ -132,7 +137,7 @@ def cosh_t(x):
     return generar_resultado(funcion, x)
 
 def sqrt_t(x):
-    pass
+    return power_t(x, div_t(2))
 
 def asin_t(x):
     parte1 = "factorial(2*n)"
@@ -146,7 +151,7 @@ def asin_t(x):
 
 
 def acos_t(x):
-    pass
+    return power_t(cos_t(x), -1)
 
 def cot_t(x):
-    pass
+    return div_t(tan_t(x))
