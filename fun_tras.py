@@ -5,7 +5,11 @@ import numpy
 tolerancia = 10**(-8)
 iteracionesMaximas = 2500
 pi = 3.14159265358979323846
+eps = 2.2204 * (10**(-16))
 #---------------------------------------------
+
+def power_t(x,y):
+    return x**y
 
 #------------- FUNCIONES GLOBALES-------------
 def factorial(x):
@@ -39,9 +43,41 @@ def generar_resultado(expresion, a):
 
     return suma
 #---------------------------------------------
+def det_x0(a):
+    valor = 0
+    if a > factorial(80) and a < factorial(100):
+        return power_t(eps, 15)
+
+    elif a > factorial(60) and a <= factorial(80):
+        return power_t(eps, 11)
+
+    elif a > factorial(40) and a <= factorial(60):
+        return power_t(eps, 8)
+
+    elif a > factorial(20) and a <= factorial(40):
+        return power_t(eps, 4)
+
+    else:
+        return power_t(eps, 2)
 
 def div_t(x):
-    return x**-1
+    if x >= factorial(100):
+        return 0
+
+    else:
+        xk = det_x0(x)
+        xk_mas_uno = 0
+        valor = 0
+
+        for n in range(iteracionesMaximas):
+            xk_mas_uno = xk * (2-x*xk)
+
+            if abs(xk_mas_uno-xk) < tolerancia * abs(xk_mas_uno):
+                break
+
+            xk = xk_mas_uno
+        return xk
+
 
 def sin_t(x):
     parte1 = "(-1)**n"
@@ -69,7 +105,24 @@ def tanh_t(x):
     return sin_t(x) * div_t(cosh_t(x) + 1)
 
 def root_t(x, y):
-    return power_t(x, div_t(y))
+    if x > 0 and y > 2:
+        xk = x * div_t(2)
+        xk_mas_uno = 0
+
+        for n in range(iteracionesMaximas):
+            xk_mas_uno = xk - ((power_t(xk, y)-x) * (y * power_t(xk, y-1)))
+
+            if abs(xk_mas_uno-xk) < tolerancia * abs(xk_mas_uno):
+                break
+
+            xk = xk_mas_uno
+
+        return xk
+
+    else:
+        return 1
+
+print(root_t(4,3))
 
 def atan_t(x):
     parte1 = "(-1)**n"
@@ -106,7 +159,7 @@ def exp_t(x):
     return generar_resultado(funcion, x)
 
 
-def cos_t(x): 
+def cos_t(x):
     parte1 = "(-1)**n"
     parte2 = "a**(2*n)"
     parte3 = "div_t(factorial(2**n))"
@@ -125,8 +178,6 @@ def ln_t(x):
 
     return generar_resultado(funcion, x)
 
-def power_t(x,y):
-    return x**y
 
 def cosh_t(x):
     parte1 = "a**(2*n)"
@@ -150,7 +201,7 @@ def asin_t(x):
 
 
 def acos_t(x):
-    return power_t(cos_t(x), -1)
+    return pi * div_t(2) - asin_t(x)
 
 def cot_t(x):
     return div_t(tan_t(x))
