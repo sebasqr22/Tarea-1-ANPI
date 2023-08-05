@@ -93,7 +93,6 @@ def atan_t(x):
         funcion = expresion(f"-{antes}-({parte1} * {parte2})")
 
         return generar_resultado(funcion, x)
-print(atan_t(pi))
 
 def sec_t(x):
     return div_t(cos_t(x))
