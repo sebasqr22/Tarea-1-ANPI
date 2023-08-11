@@ -122,7 +122,7 @@ def root_t(x, y):
     else:
         return 1
 
-print(root_t(4,3))
+#print(root_t(4,3))
 
 def atan_t(x):
     parte1 = "(-1)**n"
@@ -198,7 +198,6 @@ def asin_t(x):
     funcion = expresion(f"({parte1} * {parte2} * {parte3} * {parte4}) * {parte5}")
 
     return generar_resultado(funcion, x)
-
 
 def acos_t(x):
     return pi * div_t(2) - asin_t(x)
