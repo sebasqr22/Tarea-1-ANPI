@@ -68,6 +68,13 @@ def help():
 
     Button(ventana_secundaria, text="SALIR", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: cerrar_ventana(ventana_secundaria)).place(x=360, y=675)
 
+def colocar_respuerta(respuesta):
+
+    Salida.delete(0, END)
+    Salida.insert(0, str(respuesta))
+
+    return 0
+
 
 # Se crea la ventana con ayuda de Tkinter, la cual será la calculadora.
 ventana = Tk()
@@ -88,10 +95,10 @@ alto_boton = 3
 operador = ""
 
 # Variable que contiene el texto en String insertado en el espacio de "x".
-input_textx = StringVar()
+respuesta = StringVar()
 
 # Variable que convierte el texto en int insertado en el espacio de "x".
-x = int (input_textx)
+#x = int (input_textx)
 
 # Variable que contiene el texto en String insertado en el espacio de "y".
 input_texty = StringVar()
@@ -105,7 +112,7 @@ Nx = Label(ventana, font=('arial', 15, 'bold'), text="x =", bd=5, bg="RoyalBlue1
 Nx.place(x=10, y=90)
 
 # Se crea una entrada para que el usuario inserte el número deseado.
-Entradax = Entry(ventana, font=('arial', 20, 'bold'), width=30, textvariable=input_textx, bd=20, insertwidth=4, bg="white", justify="left")
+Entradax = Entry(ventana, font=('arial', 20, 'bold'), width=30, bd=20, insertwidth=4, bg="white", justify="left")
 Entradax.place(x=55, y=70)
 
 # Se crea un label que contiene la letra "y" y se ubica en la ventana.
@@ -121,7 +128,7 @@ Answer = Label(ventana, font=('arial', 15, 'bold'), text="Answer =", bd=5, bg="R
 Answer.place(x=10, y=270)
 
 # Se crea una entrada el cual contendra la respuesta.
-Salida = Entry(ventana, font=('arial', 20, 'bold'), width=26, textvariable="", bd=20, insertwidth=4, bg="white", justify="left", state="disabled")
+Salida = Entry(ventana, font=('arial', 20, 'bold'), width=26, bd=20, insertwidth=4, bg="white", justify="left", state="normal")
 Salida.place(x=115, y=250)
 
 # Se crean los botones y se añaden a la ventana de la calculadora
@@ -130,7 +137,7 @@ Button(ventana,text="HELP",bg=color_boton,width=ancho_boton,height=alto_boton,co
 
 Button(ventana,text="Clear All",bg=color_boton,width=ancho_boton,height=alto_boton,command=clear_entries).place(x=565, y=130)
 
-Button(ventana, text="senh(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: write_to_active_entry("senh(")).place(x=17,y=335)
+Button(ventana, text="senh(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command = lambda: colocar_respuerta(sinh_t(int(Entradax.get()))) ).place(x=17,y=335)
 
 Button(ventana, text="cosh(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: write_to_active_entry("cosh(")).place(x=107, y=335)
 
@@ -148,7 +155,9 @@ Button(ventana, text="csc(x)", bg=color_boton, width=ancho_boton, height=alto_bo
 
 Button(ventana, text="cot(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: write_to_active_entry("cot(")).place(x=107, y=400)
 
-Button(ventana, text="sen(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: [sin_t(x)]).place(x=197, y=400)
+Button(ventana, text="sen(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: write_to_active_entry("sen(")).place(x=197, y=400)
+
+#Button(ventana, text="sen(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: [sin_t(x)]).place(x=197, y=400)
 
 Button(ventana, text="cos(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: write_to_active_entry("cos(")).place(x=287, y=400)
 
