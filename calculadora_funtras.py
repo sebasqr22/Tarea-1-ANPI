@@ -30,6 +30,7 @@ def write_to_active_entry(num):
 def clear_entries():
     Entradax.delete(0, tk.END)  # Borra el contenido del Entry Entradax
     Entraday.delete(0, tk.END)  # Borra el contenido del Entry Entraday
+    Salida.delete(0, END) #Borra el contenido del Entry Salida
 
 def cerrar_ventana(ventana_a_cerrar):
     ventana_a_cerrar.destroy()
@@ -75,7 +76,7 @@ def colocar_respuesta(respuesta):
 
     return 0
 
-
+Fuente = ("Georgia", 12)
 # Se crea la ventana con ayuda de Tkinter, la cual será la calculadora.
 ventana = Tk()
 # Se le pone un título vacío a la ventana.
@@ -84,12 +85,20 @@ ventana.title("")
 ventana.geometry("650x800")
 # Se le drinda un color a la calculadora.
 ventana.configure(background="RoyalBlue1")
+# Se deja el tamaño de la ventana fija
+ventana.resizable(False, False)
 # Se le asigna un color a la los botones que se crearan en un futuro.
 color_boton = ("gray77")
 
+#Cargar la imagen
+#original_image = PhotoImage(file="Fondo.png")
+#Crear un label para la imagen de fondo
+#fondo = tk.Label(ventana, image=original_image)
+#fondo.pack(fill=tk.BOTH, expand=True)
+
 # Se le fijan dimensiones a los botones.
-ancho_boton = 10
-alto_boton = 3
+ancho_boton = 8
+alto_boton = 2
 
 # Se crea la variable operador vacía.
 operador = ""
@@ -133,77 +142,75 @@ Salida.place(x=115, y=250)
 
 # Se crean los botones y se añaden a la ventana de la calculadora
 
-Button(ventana,text="HELP",bg=color_boton,width=ancho_boton,height=alto_boton,command=help).place(x=10, y=5)
+Button(ventana,text="HELP",font=Fuente,bg=color_boton,width=ancho_boton,height=alto_boton,command=help).place(x=10, y=5)
 
-Button(ventana,text="Clear All",bg=color_boton,width=ancho_boton,height=alto_boton,command=clear_entries).place(x=565, y=130)
+Button(ventana,text="Clear All", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=clear_entries).place(x=565, y=130)
 
-Button(ventana, text="senh(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command = lambda: colocar_respuesta(sinh_t(int(Entradax.get()))) ).place(x=17,y=335)
+Button(ventana, text="senh(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command = lambda: colocar_respuesta(sinh_t(int(Entradax.get()))) ).place(x=17,y=335)
 
-Button(ventana, text="cosh(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(cosh_t(int(Entradax.get()))) ).place(x=107, y=335)
+Button(ventana, text="cosh(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(cosh_t(int(Entradax.get()))) ).place(x=107, y=335)
 
-Button(ventana, text="tanh(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(tanh_t(int(Entradax.get()))) ).place(x=197, y=335)
+Button(ventana, text="tanh(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(tanh_t(int(Entradax.get()))) ).place(x=197, y=335)
 
-Button(ventana, text="asen(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(asin_t(int(Entradax.get()))) ).place(x=287, y=335)
+Button(ventana, text="asen(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(asin_t(int(Entradax.get()))) ).place(x=287, y=335)
 
-Button(ventana, text="acos(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(acos_t(int(Entradax.get()))) ).place(x=377, y=335)
+Button(ventana, text="acos(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(acos_t(int(Entradax.get()))) ).place(x=377, y=335)
 
-Button(ventana, text="atan(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(atan_t(int(Entradax.get()))) ).place(x=467, y=335)
+Button(ventana, text="atan(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(atan_t(int(Entradax.get()))) ).place(x=467, y=335)
 
-Button(ventana, text="sec(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(sec_t(int(Entradax.get()))) ).place(x=557, y=335)
+Button(ventana, text="sec(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(sec_t(int(Entradax.get()))) ).place(x=557, y=335)
 
-Button(ventana, text="csc(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(csc_t(int(Entradax.get()))) ).place(x=17, y=400)
+Button(ventana, text="csc(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(csc_t(int(Entradax.get()))) ).place(x=17, y=400)
 
-Button(ventana, text="cot(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(cot_t(int(Entradax.get()))) ).place(x=107, y=400)
+Button(ventana, text="cot(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(cot_t(int(Entradax.get()))) ).place(x=107, y=400)
 
-Button(ventana, text="sen(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(sin_t(int(Entradax.get()))) ).place(x=197, y=400)
+Button(ventana, text="sen(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(sin_t(int(Entradax.get()))) ).place(x=197, y=400)
 
-#Button(ventana, text="sen(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: [sin_t(x)]).place(x=197, y=400)
+Button(ventana, text="cos(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(cos_t(int(Entradax.get()))) ).place(x=287, y=400)
 
-Button(ventana, text="cos(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(cos_t(int(Entradax.get()))) ).place(x=287, y=400)
+Button(ventana, text="tan(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(tan_t(int(Entradax.get()))) ).place(x=377, y=400)
 
-Button(ventana, text="tan(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(tan_t(int(Entradax.get()))) ).place(x=377, y=400)
+Button(ventana, text="ln(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(ln_t(int(Entradax.get()))) ).place(x=467, y=400)
 
-Button(ventana, text="ln(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(ln_t(int(Entradax.get()))) ).place(x=467, y=400)
+Button(ventana, text="log10(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(log_t(int(Entradax.get()), 10)) ).place(x=557, y=400)
 
-Button(ventana, text="log10(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: write_to_active_entry("log10(")).place(x=557, y=400)
+Button(ventana, text="logy(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(log_t(int(Entradax.get()), int(Entraday.get()))) ).place(x=17, y=465)
 
-Button(ventana, text="logy(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(log_t(int(Entradax.get()), int(Entraday.get()))) ).place(x=17, y=465)
+Button(ventana, text="1/x", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(div_t(int(Entradax.get()))) ).place(x=107, y=465)
 
-Button(ventana, text="1/x", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(div_t(int(Entradax.get()))) ).place(x=107, y=465)
+Button(ventana, text="√x", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(sqrt_t(int(Entradax.get()))) ).place(x=197, y=465)
 
-Button(ventana, text="√x", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(sqrt_t(int(Entradax.get()))) ).place(x=197, y=465)
+Button(ventana, text="y√x", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(root_t(int(Entradax.get()), int(Entraday.get()))) ).place(x=287, y=465)
 
-Button(ventana, text="y√x", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(root_t(int(Entradax.get()), int(Entraday.get()))) ).place(x=287, y=465)
+Button(ventana, text="exp(x)", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(exp_t(int(Entradax.get()))) ).place(x=377, y=465)
 
-Button(ventana, text="exp(x)", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(exp_t(int(Entradax.get()))) ).place(x=377, y=465)
+Button(ventana, text="x^y", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(power_t(int(Entradax.get()), int(Entraday.get()))) ).place(x=467, y=465)
 
-Button(ventana, text="x^y", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(power_t(int(Entradax.get()), int(Entraday.get()))) ).place(x=467, y=465)
+Button(ventana, text="x!", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(factorial(int(Entradax.get()))) ).place(x=557, y=465)
 
-Button(ventana, text="x!", bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(factorial(int(Entradax.get()))) ).place(x=557, y=465)
+Button(ventana,text="7", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(7)).place(x=197,y=530)
 
-Button(ventana,text="7",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(7)).place(x=197,y=530)
+Button(ventana,text="8", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(8)).place(x=287,y=530)
 
-Button(ventana,text="8",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(8)).place(x=287,y=530)
+Button(ventana,text="9", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(9)).place(x=377,y=530)
 
-Button(ventana,text="9",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(9)).place(x=377,y=530)
+Button(ventana,text="4", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(4)).place(x=197,y=595)
 
-Button(ventana,text="4",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(4)).place(x=197,y=595)
+Button(ventana,text="5", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(5)).place(x=287,y=595)
 
-Button(ventana,text="5",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(5)).place(x=287,y=595)
+Button(ventana,text="6", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(6)).place(x=377,y=595)
 
-Button(ventana,text="6",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(6)).place(x=377,y=595)
+Button(ventana,text="1", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(1)).place(x=197,y=660)
 
-Button(ventana,text="1",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(1)).place(x=197,y=660)
+Button(ventana,text="2", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(2)).place(x=287,y=660)
 
-Button(ventana,text="2",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(2)).place(x=287,y=660)
+Button(ventana,text="3", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(3)).place(x=377,y=660)
 
-Button(ventana,text="3",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(3)).place(x=377,y=660)
+Button(ventana,text="0", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(0)).place(x=287,y=725)
 
-Button(ventana,text="0",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(0)).place(x=287,y=725)
+Button(ventana,text="π", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(pi_t)).place(x=197,y=725)
 
-Button(ventana,text="π",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(pi_t)).place(x=197,y=725)
-
-Button(ventana,text=".",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(".")).place(x=377,y=725)
+Button(ventana,text=".", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(".")).place(x=377,y=725)
 
 # Registrar los Entry como activos cuando se hace clic en ellos
 Entradax.bind("<Button-1>", lambda event: set_active_entry(Entradax))
