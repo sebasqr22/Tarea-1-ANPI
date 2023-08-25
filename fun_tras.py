@@ -1,5 +1,6 @@
 import math
-import numpy
+from error_window import *
+#import numpy
 
 #------------- VARIABLES GLOBALES-------------
 tolerancia = 10**(-8)
@@ -15,17 +16,18 @@ def power_t(x,y):
 def factorial(x):
     if x==0 or x==1:
         return 1
-    else:
+    elif (x>1):
         resultado = 1
         while x > 1:
             resultado *= x
             x -= 1
         return resultado
+    else:
+        return  "ERROR"
 
 def expresion(expre):
     funcion = eval("lambda n, a:" + expre)
     return funcion
-
 
 def medir_tolerancia(sk, mas_uno):
     return abs(mas_uno - sk) < tolerancia
@@ -63,7 +65,8 @@ def det_x0(a):
 def div_t(x):
     if x >= factorial(100):
         return 0
-
+    elif x == 0:
+        return "ERROR"
     else:
         xk = det_x0(x)
         xk_mas_uno = 0
@@ -78,7 +81,6 @@ def div_t(x):
             xk = xk_mas_uno
         return xk
 
-
 def sin_t(x):
     parte1 = "(-1)**n"
     parte2 = "a**(2*n+1)"
@@ -91,7 +93,10 @@ def tan_t(x):
     return sin_t(x) * div_t(cos_t(x))
 
 def log_t(x, y):
-    return ln_t(x) * div_t(ln_t(y))
+    if x>0:
+        return ln_t(x) * div_t(ln_t(y))
+    else:
+        return "ERROR"
 
 def sinh_t(x):
     parte1 = "a**(2*n + 1)"
@@ -158,7 +163,6 @@ def exp_t(x):
 
     return generar_resultado(funcion, x)
 
-
 def cos_t(x):
     parte1 = "(-1)**n"
     parte2 = "a**(2*n)"
@@ -168,15 +172,18 @@ def cos_t(x):
     return generar_resultado(funcion, x)
 
 def ln_t(x):
-    parte1_antes = "2*(a-1)"
-    parte2_antes = "div_t(a+1)"
+    if (x > 0):
+        parte1_antes = "2*(a-1)"
+        parte2_antes = "div_t(a+1)"
 
-    parte1 = "div_t(2*n+1)"
-    parte2 = "a-1"
-    parte3 = "div_t(a+1)"
-    funcion = expresion(f"({parte1_antes} * {parte2_antes}) * (({parte1}) * ({parte2} * {parte3})**(2*n))")
+        parte1 = "div_t(2*n+1)"
+        parte2 = "a-1"
+        parte3 = "div_t(a+1)"
+        funcion = expresion(f"({parte1_antes} * {parte2_antes}) * (({parte1}) * ({parte2} * {parte3})**(2*n))")
 
-    return generar_resultado(funcion, x)
+        return generar_resultado(funcion, x)
+    else:
+        return "ERROR"
 
 
 def cosh_t(x):
@@ -187,20 +194,29 @@ def cosh_t(x):
     return generar_resultado(funcion, x)
 
 def sqrt_t(x):
-    return power_t(x, div_t(2))
+    if (x >= 0):
+        return power_t(x, div_t(2))
+    else:
+        "ERROR"
 
 def asin_t(x):
-    parte1 = "factorial(2*n)"
-    parte2 = "div_t(4**n)"
-    parte3 = "div_t(factorial(n)**2)"
-    parte4 = "div_t(2*n + 1)"
-    parte5 = "a**(2*n+1)"
-    funcion = expresion(f"({parte1} * {parte2} * {parte3} * {parte4}) * {parte5}")
+    if -1 <= x <= 1:
+        parte1 = "factorial(2*n)"
+        parte2 = "div_t(4**n)"
+        parte3 = "div_t(factorial(n)**2)"
+        parte4 = "div_t(2*n + 1)"
+        parte5 = "a**(2*n+1)"
+        funcion = expresion(f"({parte1} * {parte2} * {parte3} * {parte4}) * {parte5}")
 
-    return generar_resultado(funcion, x)
+        return generar_resultado(funcion, x)
+    else:
+        return "ERROR"
 
 def acos_t(x):
-    return pi * div_t(2) - asin_t(x)
+    if -1 <= x <= 1:
+        return pi * div_t(2) - asin_t(x)
+    else:
+        return "ERROR"
 
 def cot_t(x):
     return div_t(tan_t(x))
