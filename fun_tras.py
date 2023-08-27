@@ -123,7 +123,6 @@ def root_t(x, y):
             xk = xk_mas_uno
 
         return xk
-
     else:
         return 1
 
@@ -197,7 +196,7 @@ def sqrt_t(x):
     if (x >= 0):
         return power_t(x, div_t(2))
     else:
-        "ERROR"
+        return "ERROR"
 
 def asin_t(x):
     if -1 <= x <= 1:
