@@ -90,7 +90,11 @@ def sin_t(x):
     return generar_resultado(funcion, x)
 
 def tan_t(x):
-    return sin_t(x) * div_t(cos_t(x))
+    if (abs(cos_t(x)) > 10 ** (-10)):
+        return sin_t(x) * div_t(cos_t(x))
+    else:
+        return "ERROR"
+
 
 def log_t(x, y):
     if x>0:
@@ -152,10 +156,17 @@ def atan_t(x):
         return generar_resultado(funcion, x)
 
 def sec_t(x):
-    return div_t(cos_t(x))
+    if (abs(cos_t(x)) > 10**(-10)):
+        return div_t(cos_t(x))
+    else:
+        return "ERROR"
 
 def csc_t(x):
-    return div_t(sin_t(x))
+    if (abs(sin_t(x)) > 10 ** (-10)):
+        return div_t(sin_t(x))
+    else:
+        return "ERROR"
+
 
 def exp_t(x):
     funcion = expresion("a**n * div_t(factorial(n))")
@@ -218,4 +229,7 @@ def acos_t(x):
         return "ERROR"
 
 def cot_t(x):
-    return div_t(tan_t(x))
+    if (abs(sin_t(x)) > (10 ** (-10))):
+        return cos_t(x) * div_t(sin_t(x))
+    else:
+        return "ERROR"
