@@ -1,5 +1,8 @@
 import math
 from error_window import *
+import decimal
+
+decimal.getcontext().prec = 100
 #import numpy
 
 #------------- VARIABLES GLOBALES-------------
@@ -44,6 +47,9 @@ def generar_resultado(expresion, a):
         suma += sk
 
     return suma
+
+def generar_result_2(a):
+    pass
 #---------------------------------------------
 def det_x0(a):
     valor = 0
@@ -136,24 +142,50 @@ def atan_t(x):
     parte1 = "(-1)**n"
     antes = "pi * div_t(2)"
 
-    if x >= -1 or x <= 1:
-        parte2 = "a**(2*n+1)"
-        parte3 = "div_t(2*n+1)"
-        funcion = expresion(f"{parte1} * ({parte2} * {parte3})")
+    if x >= -1 and x <= 1:
+        suma = 0
+        for n in range(iteracionesMaximas):
+            n1 = n + 1
 
-        return generar_resultado(funcion, x)
+            sk = (-1)**n * x**(2*n+1) * div_t(2*n+1)
+            sk1 = (-1)**n1 * x**(2*n1+1) * div_t(2*n1+1)
+
+            if medir_tolerancia(sk, sk1):
+                break
+
+            suma += sk
+        print(f"SUMAMMMMMMMMMMMMMMMMMMMMAMAAAAAAAAAA {suma}")
+        return suma
 
     elif x > 1:
-        parte2 = "div_t((2*n+1) * a**(2*n+1))"
-        funcion = expresion(f"{antes}-({parte1} * {parte2})")
+        suma = 0
+        for n in range(iteracionesMaximas):
+            n1 = n + 1
 
-        return generar_resultado(funcion, x)
+            sk = (((-1)**n)) * (div_t((2*n+1) * x**(2*n+1)))
+            sk1 = (((-1)**n1)) * (div_t((2*n1+1) * x**(2*n1+1)))
+
+            if medir_tolerancia(sk, sk1):
+                break
+
+            suma += sk
+        print(f"SUMAMMMMMMMMMMMMMMMMMMMMAMAAAAAAAAAA {suma}")
+        return (pi * div_t(2)) - suma
 
     else:
-        parte2 = "div_t((2*n+1) * a**(2*n+1))"
-        funcion = expresion(f"-{antes}-({parte1} * {parte2})")
+        suma = 0
+        for n in range(iteracionesMaximas):
+            n1 = n + 1
 
-        return generar_resultado(funcion, x)
+            sk = (((-1)**n)) * (div_t((2*n+1) * x**(2*n+1)))
+            sk1 = (((-1)**n1)) * (div_t((2*n1+1) * x**(2*n1+1)))
+
+            if medir_tolerancia(sk, sk1):
+                break
+
+            suma += sk
+        print(f"SUMAMMMMMMMMMMMMMMMMMMMMAMAAAAAAAAAA {suma}")
+        return (pi * div_t(2)) - suma
 
 def sec_t(x):
     if (abs(cos_t(x)) > 10**(-10)):
