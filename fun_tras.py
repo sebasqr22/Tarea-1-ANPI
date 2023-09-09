@@ -95,7 +95,7 @@ def sin_t(x):
 
     return generar_resultado(funcion, x)
 
-def tan_t(x):
+def a_t(x):
     if (abs(cos_t(x)) > 10 ** (-10)):
         return sin_t(x) * div_t(cos_t(x))
     else:
@@ -108,8 +108,8 @@ def log_t(x, y):
     else:
         return "ERROR"
 
-def sinh_t(x):
-    parte1 = "a**(2*n + 1)"
+def sinh_t(x): 
+    parte1 = "power_t(a, 2*n +1)"
     parte2 = "div_t(factorial(2*n + 1))"
     funcion = expresion(f"{parte1} * {parte2}")
 
@@ -138,8 +138,8 @@ def root_t(x, y):
 
 #print(root_t(4,3))
 
-def atan_t(x):
-    parte1 = "(-1)**n"
+def atan_t(x): 
+    parte1 = "power_t(-1, n)"
     antes = "pi * div_t(2)"
 
     if x >= -1 and x <= 1:
@@ -147,8 +147,8 @@ def atan_t(x):
         for n in range(iteracionesMaximas):
             n1 = n + 1
 
-            sk = (-1)**n * x**(2*n+1) * div_t(2*n+1)
-            sk1 = (-1)**n1 * x**(2*n1+1) * div_t(2*n1+1)
+            sk = power_t(-1, n) * power_t(x, 2*n+1) * div_t(2*n+1)
+            sk1 = power_t(-1, n1) * power_t(x, 2*n1+1) * div_t(2*n1+1)
 
             if medir_tolerancia(sk, sk1):
                 break
@@ -159,11 +159,11 @@ def atan_t(x):
 
     elif x > 1:
         suma = 0
-        for n in range(iteracionesMaximas):
+        for n in range(iteracionesMaximas): 
             n1 = n + 1
 
-            sk = (((-1)**n)) * (div_t((2*n+1) * x**(2*n+1)))
-            sk1 = (((-1)**n1)) * (div_t((2*n1+1) * x**(2*n1+1)))
+            sk = power_t(-1, n) * (div_t((2*n+1) * power_t(x, 2*n+1)))
+            sk1 = power_t(-1, n1) * (div_t((2*n1+1) * power_t(x, 2*n1+1)))
 
             if medir_tolerancia(sk, sk1):
                 break
@@ -177,8 +177,8 @@ def atan_t(x):
         for n in range(iteracionesMaximas):
             n1 = n + 1
 
-            sk = (((-1)**n)) * (div_t((2*n+1) * x**(2*n+1)))
-            sk1 = (((-1)**n1)) * (div_t((2*n1+1) * x**(2*n1+1)))
+            sk = power_t(-1, n) * (div_t((2*n+1) * power_t(x, 2*n+1)))
+            sk1 = power_t(-1, n1) * (div_t((2*n1+1) * power_t(x, 2*n1+1)))
 
             if medir_tolerancia(sk, sk1):
                 break
@@ -207,8 +207,8 @@ def exp_t(x):
     return generar_resultado(funcion, x)
 
 def cos_t(x):
-    parte1 = "(-1)**n"
-    parte2 = "a**(2*n)"
+    parte1 = "power_t(-1, n)"
+    parte2 = "power_t(a, 2*n)"
     parte3 = "div_t(factorial(2*n))"
     funcion = expresion(f"({parte1}) * ( ({parte2}) * ({parte3}) )")
 
@@ -234,7 +234,7 @@ def ln_t(x):
 
 
 def cosh_t(x):
-    parte1 = "a**(2*n)"
+    parte1 = "power_t(a, 2*n)"
     parte2 = "div_t(factorial(2*n))"
     funcion = expresion(f"{parte1} * {parte2}")
 
@@ -247,12 +247,12 @@ def sqrt_t(x):
         return "ERROR"
 
 def asin_t(x):
-    if -1 <= x <= 1:
+    if -1 <= x <= 1: 
         parte1 = "factorial(2*n)"
-        parte2 = "div_t(4**n)"
-        parte3 = "div_t(factorial(n)**2)"
+        parte2 = "div_t(power_t(4,n))"
+        parte3 = "div_t(power_t(factorial(n), 2))"
         parte4 = "div_t(2*n + 1)"
-        parte5 = "a**(2*n+1)"
+        parte5 = "power_t(a, 2*n+1)"
         funcion = expresion(f"({parte1} * {parte2} * {parte3} * {parte4}) * {parte5}")
 
         return generar_resultado(funcion, x)
@@ -265,8 +265,11 @@ def acos_t(x):
     else:
         return "ERROR"
 
+def tan_t(x):
+    return sin_t(x) * div_t(cos_t(x))
+
 def cot_t(x):
     if (abs(sin_t(x)) > (10 ** (-10))):
-        return cos_t(x) * div_t(sin_t(x))
+        return div_t(tan_t(x))
     else:
         return "ERROR"
