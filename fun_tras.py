@@ -188,7 +188,8 @@ def atan_t(x):
         return (pi * div_t(2)) - suma
 
 def sec_t(x):
-    if (abs(cos_t(x)) > 10**(-10)):
+    if x >= -1 and x <= 1:
+        #return div_t(cos_t(x))
         return div_t(cos_t(x))
     else:
         return "ERROR"
@@ -208,21 +209,13 @@ def exp_t(x):
 def cos_t(x):
     parte1 = "(-1)**n"
     parte2 = "a**(2*n)"
-    parte3 = "div_t(factorial(2**n))"
+    parte3 = "div_t(factorial(2*n))"
     funcion = expresion(f"({parte1}) * ( ({parte2}) * ({parte3}) )")
 
     return generar_resultado(funcion, x)
 
 def ln_t(x):
     if (x > 0):
-        parte1_antes = "2*(a-1)"
-        parte2_antes = "div_t(a+1)"
-
-        parte1 = "div_t(2*n+1)"
-        parte2 = "a-1"
-        parte3 = "div_t(a+1)"
-        #funcion = expresion(f"({parte1_antes} * {parte2_antes}) * (({parte1}) * ({parte2} * {parte3})**(2*n))") **--???' 
-
         suma = 0
         for n in range(iteracionesMaximas):
             n1 = n + 1
