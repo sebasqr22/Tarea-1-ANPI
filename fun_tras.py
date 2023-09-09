@@ -3,7 +3,9 @@ from error_window import *
 import decimal
 
 decimal.getcontext().prec = 100
-#import numpy
+# 
+# Recibe
+# Retorna
 
 #------------- VARIABLES GLOBALES-------------
 tolerancia = 10**(-8)
@@ -12,10 +14,17 @@ pi = 3.14159265358979323846
 eps = 2.2204 * (10**(-16))
 #---------------------------------------------
 
+# Funcion que calcula la potencia de un numero
+# Recibe un numero a calcular la potencia y una potencia
+# Retorna el resultado de la potencia
 def power_t(x,y):
     return x**y
 
 #------------- FUNCIONES GLOBALES-------------
+
+# Funcion que calcula el factorial de un numero
+# Recibe un numero a calcular el factorial
+# Retorna el resultado de la operacion factorial
 def factorial(x):
     if x==0 or x==1:
         return 1
@@ -28,13 +37,22 @@ def factorial(x):
     else:
         return  "ERROR"
 
+# Funcion que convierte un string a una funcion matematica
+# Recibe un string
+# Retorna la funcion matematica lambda segun lo dado con el string
 def expresion(expre):
     funcion = eval("lambda n, a:" + expre)
     return funcion
 
+# Funcion que calcula el resultado de la tolerancia
+# Recibe el valor de una iteracion junto al valor de la iteracion siguiente
+# Retorna un valor de verdad que indica si se paran los ciclos de iteracion
 def medir_tolerancia(sk, mas_uno):
     return abs(mas_uno - sk) < tolerancia
 
+# Funcion que genera los resultados de una sumatoria dada
+# Recibe la expresion matematica a utilizar y el valor numerico que se utilizara en la operacion
+# Retorna el resultado final de la sumatoria
 def generar_resultado(expresion, a):
     suma = 0
     for n in range(iteracionesMaximas):
@@ -48,9 +66,11 @@ def generar_resultado(expresion, a):
 
     return suma
 
-def generar_result_2(a):
-    pass
 #---------------------------------------------
+
+# Funcion que calcula el valor inicial de la sucesion utilizada para calcular el inverso de un numero
+# Recibe el valor del numero al que se desea obtener el inverso
+# Retorna el valor inicial de x0 para la sucesion del inverso de un numero
 def det_x0(a):
     valor = 0
     if a > factorial(80) and a < factorial(100):
@@ -68,6 +88,9 @@ def det_x0(a):
     else:
         return power_t(eps, 2)
 
+# Funcion que calcula el inverso de un numero, para poder expresar fracciones
+# Recibe el valor del numero al que se desea obtener el inverso
+# Retorna el resultado de la operacion inverso (^-1)
 def div_t(x):
     neg = False
     if x < 0:
@@ -95,6 +118,9 @@ def div_t(x):
             xk = -xk
         return xk
 
+# Funcion que calcula el valor de un seno
+# Recibe el valor numero a calcular el seno
+# Retorna el resultado de la sumatoria que modela el valor de un seno
 def sin_t(x):
     parte1 = "power_t(-1, n)"
     parte2 = "power_t(a, 2*n +1)"
@@ -103,19 +129,19 @@ def sin_t(x):
 
     return generar_resultado(funcion, x)
 
-def a_t(x):
-    if (abs(cos_t(x)) > 10 ** (-10)):
-        return sin_t(x) * div_t(cos_t(x))
-    else:
-        return "ERROR"
 
-
+# Funcion que calcula el valor de un logaritmo
+# Recibe el numero a calcular el logaritmo y el valor del logaritmo a calcular
+# Retorna el resultado de la operacion logaritmo
 def log_t(x, y):
     if x>0:
         return ln_t(x) * div_t(ln_t(y))
     else:
         return "ERROR"
 
+# Funcion que calcula el seno hiperbolico de un numero
+# Recibe el valor del numero a calcular el seno hiperbolico
+# Retorna el resultado de la operacion seno hiperbolico
 def sinh_t(x): 
     parte1 = "power_t(a, 2*n +1)"
     parte2 = "div_t(factorial(2*n + 1))"
@@ -123,10 +149,15 @@ def sinh_t(x):
 
     return generar_resultado(funcion, x)
 
-
+# Funcion que calcula la tangente hiperbolica de un numero
+# Recibe el numero al que se desea calcular la tangente hiperbolico
+# Retorna el resultado de la operacion tangente hiperbolica
 def tanh_t(x):
     return sin_t(x) * div_t(cosh_t(x) + 1)
 
+# Funcion que calcula la raiz de un numero
+# Recibe el numero de la raiz a calcular y el valor de la raiz a utilizar
+# Retorna el resultado de la raiz 
 def root_t(x, y):
     if x > 0 and y > 2 and y % 2 == 0:
         xk = x * div_t(2)
@@ -148,7 +179,9 @@ def root_t(x, y):
     else:
         return 1
 
-
+# Funcion que calcula el arco tangente de un numero
+# Recibe el numero a calcular la arco tangente
+# Retorna el resultado del calculo de la arco tangente
 def atan_t(x): 
     parte1 = "power_t(-1, n)"
     antes = "pi * div_t(2)"
@@ -195,6 +228,9 @@ def atan_t(x):
             suma += sk
         return -(pi * div_t(2)) - suma
 
+# Funcion que calcula la secante de un numero
+# Recibe el numero a calcular la secante
+# Retorna el valor de la secante del numero
 def sec_t(x):
     if x >= -1 and x <= 1:
         #return div_t(cos_t(x))
@@ -202,18 +238,26 @@ def sec_t(x):
     else:
         return "ERROR"
 
+# Funcion que calcula la cosecante de un numero
+# Recibe el numero a calcular la cosecante
+# Retorna el valor de la cosecante del numero dado
 def csc_t(x):
     if x >= -1 and x <= 1:
         return div_t(sin_t(x))
     else:
         return "ERROR"
 
-
+# Funcion que calcula el valor de e elevado a un numero
+# Recibe el numero a utilizar como exponente
+# Retorna el valor de la e elevada
 def exp_t(x):
-    funcion = expresion("a**n * div_t(factorial(n))")
+    funcion = expresion("power_t(a,n) * div_t(factorial(n))")
 
     return generar_resultado(funcion, x)
 
+# Funcion que calcula el coseno de un numero
+# Recibe el numero a calcular el coseno
+# Retorna el valor del coseno del numero
 def cos_t(x):
     parte1 = "power_t(-1, n)"
     parte2 = "power_t(a, 2*n)"
@@ -222,6 +266,9 @@ def cos_t(x):
 
     return generar_resultado(funcion, x)
 
+# Funcion que calcula el logaritmo natural de un numero
+# Recibe el valor del numero a calcular el logaritmo natural
+# Retorna el valor del logaritmo natural
 def ln_t(x):
     if (x > 0):
         suma = 0
@@ -239,7 +286,9 @@ def ln_t(x):
     else:
         return "ERROR"
 
-
+# Funcion que calcula el coseno hiperbolico de un numero
+# Recibe numero a calcularle el coseno hiperbolico
+# Retorna el valor del coseno hiperbolico del numero dado
 def cosh_t(x):
     parte1 = "power_t(a, 2*n)"
     parte2 = "div_t(factorial(2*n))"
@@ -247,12 +296,20 @@ def cosh_t(x):
 
     return generar_resultado(funcion, x)
 
+
+# Funcion que calcula la raiz cuadrada
+# Recibe numero a calcularle la raiz cuadrada
+# Retorna la raiz cuadrada del numero recibido
 def sqrt_t(x):
     if (x >= 0):
         return power_t(x, div_t(2))
     else:
         return "ERROR"
 
+
+# Funcion que calcula el arcoseno
+# Recibe numero a calcularle el arcoseno
+# Retorna el arcoseno del numero recibido
 def asin_t(x):
     if -1 <= x <= 1: 
         parte1 = "factorial(2*n)"
@@ -266,15 +323,24 @@ def asin_t(x):
     else:
         return "ERROR"
 
+# Funcion que calcula el arcocoseno
+# Recibe numero a calcularle el arcocoseno
+# Retorna el arcocoseno del numero recibido
 def acos_t(x):
     if -1 <= x <= 1:
         return pi * div_t(2) - asin_t(x)
     else:
         return "ERROR"
 
+# Funcion que calcula la tangente
+# Recibe numero a calcularle la tangente
+# Retorna la tangente del numero recibido
 def tan_t(x):
     return sin_t(x) * div_t(cos_t(x))
 
+# Funcion que calcula la cotangente
+# Recibe numero a calcularle la cotangente
+# Retorna la cotangente del numero recibido
 def cot_t(x):
     if (abs(sin_t(x)) > (10 ** (-10))):
         return div_t(tan_t(x))
