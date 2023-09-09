@@ -128,7 +128,7 @@ def tanh_t(x):
     return sin_t(x) * div_t(cosh_t(x) + 1)
 
 def root_t(x, y):
-    if x > 0 and y > 2:
+    if x > 0 and y > 2 and y % 2 == 0:
         xk = x * div_t(2)
         xk_mas_uno = 0
 
@@ -141,10 +141,13 @@ def root_t(x, y):
             xk = xk_mas_uno
 
         return xk
+    
+    elif x > 0:
+        return power_t(x, div_t(y))
+
     else:
         return 1
 
-#print(root_t(4,3))
 
 def atan_t(x): 
     parte1 = "power_t(-1, n)"
@@ -162,7 +165,6 @@ def atan_t(x):
                 break
 
             suma += sk
-        print(f"SUMAMMMMMMMMMMMMMMMMMMMMAMAAAAAAAAAA {suma}")
         return suma
 
     elif x > 1:
@@ -177,7 +179,6 @@ def atan_t(x):
                 break
 
             suma += sk
-        print(f"SUMAMMMMMMMMMMMMMMMMMMMMAMAAAAAAAAAA {suma}")
         return (pi * div_t(2)) - suma
 
     else:
@@ -192,7 +193,6 @@ def atan_t(x):
                 break
 
             suma += sk
-        print(f"SUMAMMMMMMMMMMMMMMMMMMMMAMAAAAAAAAAA {suma}")
         return (pi * div_t(2)) - suma
 
 def sec_t(x):
@@ -235,7 +235,6 @@ def ln_t(x):
                 break
 
             suma += sk
-        print(f"LNNNNNNNNNNNNNNNNNNNNN {suma}")
         return ((2*(x-1)) * (div_t(x+1))) * suma
     else:
         return "ERROR"

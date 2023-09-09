@@ -151,7 +151,7 @@ Button(ventana, text="exp(x)", font=Fuente, bg=color_boton, width=ancho_boton, h
 
 Button(ventana, text="x^y", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(power_t(float(Entradax.get()), float(Entraday.get()))) ).place(x=467, y=465)
 
-Button(ventana, text="x!", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(factorial(int(Entradax.get()))) ).place(x=557, y=465)
+Button(ventana, text="x!", font=Fuente, bg=color_boton, width=ancho_boton, height=alto_boton, command=lambda: colocar_respuesta(factorial(float(Entradax.get()))) ).place(x=557, y=465)
 
 Button(ventana,text="7", font=Fuente, bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:write_to_active_entry(7)).place(x=197,y=530)
 
