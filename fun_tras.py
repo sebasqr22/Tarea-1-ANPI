@@ -69,11 +69,17 @@ def det_x0(a):
         return power_t(eps, 2)
 
 def div_t(x):
+    neg = False
+    if x < 0:
+        neg = True
+
+
     if x >= factorial(100):
         return 0
     elif x == 0:
         return "ERROR"
     else:
+        x = abs(x)
         xk = det_x0(x)
         xk_mas_uno = 0
         valor = 0
@@ -85,6 +91,8 @@ def div_t(x):
                 break
 
             xk = xk_mas_uno
+        if(neg):
+            xk = -xk
         return xk
 
 def sin_t(x):
