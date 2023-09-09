@@ -221,9 +221,21 @@ def ln_t(x):
         parte1 = "div_t(2*n+1)"
         parte2 = "a-1"
         parte3 = "div_t(a+1)"
-        funcion = expresion(f"({parte1_antes} * {parte2_antes}) * (({parte1}) * ({parte2} * {parte3})**(2*n))")
+        #funcion = expresion(f"({parte1_antes} * {parte2_antes}) * (({parte1}) * ({parte2} * {parte3})**(2*n))") **--???' 
 
-        return generar_resultado(funcion, x)
+        suma = 0
+        for n in range(iteracionesMaximas):
+            n1 = n + 1
+
+            sk = div_t(2*n+1) * (((x-1) * div_t(x+1))**(2*n))
+            sk1 = div_t(2*n1+1) * (((x-1) * div_t(x+1))**(2*n1))
+
+            if medir_tolerancia(sk, sk1):
+                break
+
+            suma += sk
+        print(f"LNNNNNNNNNNNNNNNNNNNNN {suma}")
+        return ((2*(x-1)) * (div_t(x+1))) * suma
     else:
         return "ERROR"
 
