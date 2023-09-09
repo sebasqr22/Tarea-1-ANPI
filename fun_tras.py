@@ -88,10 +88,10 @@ def div_t(x):
         return xk
 
 def sin_t(x):
-    parte1 = "(-1)**n"
-    parte2 = "a**(2*n+1)"
-    parte3 = "div_t(factorial(2*n+1))"
-    funcion = expresion(f"{parte1} * ({parte2} * {parte3})")
+    parte1 = "power_t(-1, n)"
+    parte2 = "power_t(a, 2*n +1)"
+    parte3 = "factorial((2*n)+1)"
+    funcion = expresion(f"({parte1}) * ({parte2} * div_t({parte3}))")
 
     return generar_resultado(funcion, x)
 
@@ -195,7 +195,7 @@ def sec_t(x):
         return "ERROR"
 
 def csc_t(x):
-    if (abs(sin_t(x)) > 10 ** (-10)):
+    if x >= -1 and x <= 1:
         return div_t(sin_t(x))
     else:
         return "ERROR"
