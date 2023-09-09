@@ -193,7 +193,7 @@ def atan_t(x):
                 break
 
             suma += sk
-        return (pi * div_t(2)) - suma
+        return -(pi * div_t(2)) - suma
 
 def sec_t(x):
     if x >= -1 and x <= 1:
