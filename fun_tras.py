@@ -1,5 +1,4 @@
 import math
-from error_window import *
 import decimal
 
 decimal.getcontext().prec = 100
