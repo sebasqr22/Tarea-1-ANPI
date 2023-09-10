@@ -55,11 +55,7 @@ ventana.configure(background="RoyalBlue1")
 # Se deja el tamaño de la ventana fija.
 ventana.resizable(False, False)
 
-#Cargar la imagen
-#original_image = PhotoImage(file="Fondo.png")
-#Crear un label para la imagen de fondo
-#fondo = tk.Label(ventana, image=original_image)
-#fondo.pack(fill=tk.BOTH, expand=True)
+
 
 # Fuente que se utilizara para los botones.
 Fuente = ("Georgia", 12)
