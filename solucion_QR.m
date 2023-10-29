@@ -7,7 +7,7 @@ function solucion_QR(W,T,p,q)
   d=[real(b);imag(b)];
 
   % Resuelve el sistema Mz = d usando factorización QR
-  [Q,R]=metodoQR(M);
+  [Q,R]=metodo_QR(M);
 
   n = length(d);
   z = zeros(n, 1);
@@ -26,3 +26,27 @@ function solucion_QR(W,T,p,q)
   disp('ERROR =');
   disp(norm((A*x-b),2));
 end
+
+function [Q,R]=metodo_QR(A)
+  [m,n]=size(A);
+  U=zeros(m);
+  Q=zeros(m);
+
+  U(:,1)=A(:,1);
+  Q(:,1)=U(:,1)/norm(U(:,1),2);
+  k=2;
+  [m,n]=size(A);
+  while k<=m
+    y=0;
+    for j=1:(k-1)
+      y+=dot(A(:,k), Q(:,j))*Q(:,j);
+    endfor
+
+    U(:,k)=A(:,k)- y;
+    Q(:,k)=U(:,k)/norm(U(:,k),2);
+    k++;
+  endwhile
+  R=transpose(Q)*A;
+end
+
+
