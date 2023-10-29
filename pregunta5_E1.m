@@ -33,12 +33,12 @@ function pregunta5_E1()
   disp("Caso 1: PNHSS");
   tic;
   [W,T,b,m]=procedimiento(16);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pnhss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 1: PSHSS");
   tic;
   [W,T,b,m]=procedimiento(16);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pshss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
   disp("Caso 2: PNHSS");
@@ -49,43 +49,43 @@ function pregunta5_E1()
   disp("Caso 2: PSHSS");
   tic;
   [W,T,b,m]=procedimiento(32);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pshss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
   disp("Caso 3: PNHSS");
   tic;
   [W,T,b,m]=procedimiento(64);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pnhss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 3: PSHSS");
   tic;
   [W,T,b,m]=procedimiento(64);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pshss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
   disp("Caso 4: PNHSS");
   tic;
   [W,T,b,m]=procedimiento(128);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pnhss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 4: PSHSS");
   tic;
   [W,T,b,m]=procedimiento(128);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pshss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
   disp("Caso 5: PNHSS");
   tic;
   [W,T,b,m]=procedimiento(256);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pnhss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 5: PSHSS");
   tic;
   [W,T,b,m]=procedimiento(256);
-  [m, error, iteraciones] = PNHSS(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = pshss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
@@ -120,60 +120,60 @@ function pregunta5_E1()
   disp("Caso 1:QR");
   tic;
   [W,T,b,m]=procedimiento(16);
-  [m, error, iteraciones] = solucionQR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_QR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 1:Eliminacion Gaussiana");
   tic;
   [W,T,b,m]=procedimiento(16);
-  [m, error, iteraciones] = solucionGauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_Gauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
   disp("Caso 2:QR");
   tic;
   [W,T,b,m]=procedimiento(32);
-  [m, error, iteraciones] = solucionQR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_QR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 2:Eliminacion Gaussiana");
   tic;
   [W,T,b,m]=procedimiento(32);
-  [m, error, iteraciones] = solucionGauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_Gauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
   disp("Caso 3:QR");
   tic;
   [W,T,b,m]=procedimiento(64);
-  [m, error, iteraciones] = solucionQR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_QR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 3:Eliminacion Gaussiana");
   tic;
   [W,T,b,m]=procedimiento(64);
-  [m, error, iteraciones] = solucionGauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_Gauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
   disp("Caso 4:QR");
   tic;
   [W,T,b,m]=procedimiento(128);
-  [m, error, iteraciones] = solucionQR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_QR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 4:Eliminacion Gaussiana");
   tic;
   [W,T,b,m]=procedimiento(128);
-  [m, error, iteraciones] = solucionGauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_Gauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
   disp("Caso 5:QR");
   tic;
   [W,T,b,m]=procedimiento(256);
-  [m, error, iteraciones] = solucionQR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_QR(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
   disp("Caso 5:Eliminacion Gaussiana");
   tic;
   [W,T,b,m]=procedimiento(256);
-  [m, error, iteraciones] = solucionGauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
+  [m, error, iteraciones] = solucion_Gauss(5000, W, T, real(b), imag(b), 10^(-6)*norm(b))
   fprintf('Tiempo de ejecución: %f segundos\n', toc)
 
 
