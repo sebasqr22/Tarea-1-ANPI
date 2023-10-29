@@ -17,7 +17,7 @@ endfunction
 function [x, k, error]= PNHSS(iterMax, W, T, p, q, tol)
   w = 1;
   a = 1;
-  x = transpose([0 0 0 0]);
+  x = zeros(length(p),1);
   i = sqrt(-1);
   A = W + i*T;
   b = p + i*q;
@@ -48,7 +48,7 @@ endfunction
 
 function [x, k, error]= PSHSS(iterMax, W, T, p, q, tol)
   w = 1;
-  x = transpose([0 0 0 0]);
+  x = zeros(length(p),1);
   i = sqrt(-1);
   A = W + i*T;
   b = p + i*q;
