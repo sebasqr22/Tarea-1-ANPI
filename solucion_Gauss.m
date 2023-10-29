@@ -30,6 +30,8 @@ function solucion_Gauss(W,T,p,q,m)
   v = z(n/2+1:n);
   % Obtener solución x
   x=u+v*i;
+  disp('m =');
+  disp(m);
   disp('ERROR =');
   disp(norm((A*x-b),2));
 end

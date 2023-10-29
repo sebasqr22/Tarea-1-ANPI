@@ -1,4 +1,4 @@
-function solucion_QR(W,T,p,q,r,m)
+function solucion_QR(W,T,p,q,m)
   % Definir las matrices A y b según enunciado
   A=W+T*i;
   b=p+q*i;
@@ -23,8 +23,11 @@ function solucion_QR(W,T,p,q,r,m)
   v = z(n/2+1:n);
   % Obtener solución x
   x=u+v*i;
+  disp('m =');
+  disp(m);
   disp('ERROR =');
   disp(norm((A*x-b),2));
+
 end
 
 function [Q,R]=metodo_QR(A)
