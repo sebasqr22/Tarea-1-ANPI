@@ -1,7 +1,7 @@
-function [x, k, error] = hss(iterMax, W, T, p, q, tol)
+function [m, k, error] = hss(iterMax, W, T, p, q, tol, m)
 
   %Obtiene el número filas de W
-  m = size(W, 1);
+  filas = size(W, 1);
 
   %Definición de i según el enunciado de la tarea
   i = sqrt(-1);
@@ -12,11 +12,11 @@ function [x, k, error] = hss(iterMax, W, T, p, q, tol)
   %Cálculo de la matriz B
   b = p + i * q;
 
-  %Cálculo de la matriz identidad de tamaño m
-  Im = eye(m);
+  %Cálculo de la matriz identidad de tamaño filas
+  Im = eye(filas);
 
   %Definición del vector inicial.
-  xk = zeros(m, 1);
+  xk = zeros(filas, 1);
 
   %Cálculo de la Inversa de(Im+W)
   Inversa1 = mldivide((Im + W), Im);

@@ -1,4 +1,4 @@
-function solucion_Gauss(W,T,p,q)
+function solucion_Gauss(W,T,p,q,m)
   % Definir las matrices A y b según enunciado
   A = W+T*i;
   b = p+q*i;

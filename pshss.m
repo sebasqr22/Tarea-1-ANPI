@@ -1,4 +1,4 @@
-function [x, k, error]= pshss(iterMax, W, T, p, q, tol)
+function [m, k, error]= pshss(iterMax, W, T, p, q, tol, m)
   w = 1;
   x = zeros(length(p),1);
   i = sqrt(-1);

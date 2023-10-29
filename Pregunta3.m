@@ -1,7 +1,42 @@
 %Función que llama al método iterativo MHSS
 %Retorna el llamado a la funcion MHSS
 
-function [m, error, iteraciones] = Pregunta3(iterMax, W, T, p, q, tol, m)
+function pregunta3
+  clc;
+  % Se definen las matrices de ejemplo:
+  %Matriz W
+  W = [12, -2, 6, -2;
+  -2, 5, 2, 1;
+  6, 2, 9, -2;
+  -2, 1, -2, 1];
+
+  %Matriz T
+  T = [6, 2, 7, 2;
+  2, 7, 1, 1;
+  7, 1, 9, 0;
+  2, 1, 0, 10];
+
+  %Matriz p
+  p = [9; -7; -5; 7];
+
+  %Matriz q
+  q = [12; -4; 17; -2];
+
+  %Número de iteraciones máximas
+  iterMax = 1000;
+
+  %Criterio de parada
+  tol = 10^(-12);
+
+  %Número de iteraciones máximas
+  max_iter = 1000;
+
+  %Llamada a la función que aproxima la solución a través del método HSS
+  display("Método MHSS:")
+  [xk, error, iteraciones, alpha] = mhss(iterMax, W, T, p, q, tol)
+endfunction
+
+function [xk, error, iteraciones, alpha] = mhss(iterMax, W, T, p, q, tol)
 
   %Valor imaginario
   i = sqrt(-1);
@@ -66,4 +101,3 @@ function [m, error, iteraciones] = Pregunta3(iterMax, W, T, p, q, tol, m)
 
 
 endfunction
-

@@ -1,4 +1,4 @@
-function [x, k, error]= pnhss(iterMax, W, T, p, q, tol)
+function [m, k, error]= pnhss(iterMax, W, T, p, q, tol, m)
   w = 1;
   a = 1;
   x = zeros(length(p),1);
