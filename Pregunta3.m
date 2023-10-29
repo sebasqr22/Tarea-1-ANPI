@@ -1,41 +1,16 @@
 %Función que llama al método iterativo MHSS
 %Retorna el llamado a la funcion MHSS
 
-function Pregunta3()
-  clc;
-  %Matriz W
-  W = [12 -2 6 -2; -2 5 2 1; 6 2 9 -2; -2 1 -2 1;];
-
-  %Matriz T
-  T = [6 2 7 2; 2 7 1 1; 7 1 9 0; 2 1 0 10];
-
-  %Matriz p
-  p = [9; -7; -5; 7];
-
-  %Matriz q
-  q = [12; -4; 17; -2];
-
-  %Cantidad de iteraciones máxima
-  iterMax = 1000;
-
-  %Valor de la tolerancia de parada
-  tol = 10^-12;
-
-  display("Método MHSS:")
-  [xk, k, error, alpha] = MHSS(iterMax, W, T, p, q, tol)
-endfunction
-
-
-function [xk, k, error, alpha] = MHSS(iterMax, W, T, p, q, tol)
+function [m, error, iteraciones] = Pregunta3(iterMax, W, T, p, q, tol, m)
 
   %Valor imaginario
   i = sqrt(-1);
 
   %Tamaño de la matriz identidad
-  m = size(W, 1);
+  filas = size(W, 1);
 
   %Matriz identidad de tamaño
-  Im = eye(m);
+  Im = eye(filas);
 
   %Cálculo de la matriz A
   A = W + i*T;
@@ -44,7 +19,7 @@ function [xk, k, error, alpha] = MHSS(iterMax, W, T, p, q, tol)
   b = p + i*q;
 
   %Valor inicial del vector xk
-  xk = [0; 0; 0; 0;];
+  xk = zeros(size(W,1),1);
 
   %Calcular los autovalores de W
   Autoval = eig(W);
@@ -70,7 +45,7 @@ function [xk, k, error, alpha] = MHSS(iterMax, W, T, p, q, tol)
   %Se calcula N
   N = ((1 - i) * alpha * inversaT * inversaW);
 
-    for k=0:iterMax
+    for iteraciones=0:iterMax
 
       %Se calcula el procentaje de error con el nuevo valor de xk
       error = norm(A*xk-b);
@@ -90,13 +65,5 @@ function [xk, k, error, alpha] = MHSS(iterMax, W, T, p, q, tol)
   endfor
 
 
-
-
 endfunction
-
-
-
-
-
-
 

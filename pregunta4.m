@@ -1,3 +1,10 @@
+% Instituto Tecnologico de Costa Rica
+% Ingenieria en Computadores
+% Analisis Numerico Para Ingenieria, Tarea 2
+
+% Pregunta4 Métodos de Factorización QR y Eliminación Gaussiana
+% Grupo: Sergio Rios, Sebastian Quesada, Luis Diego Araya , Andres Molina
+
 function pregunta4 ()
   clc;
   W=[12 -2 6 -2; -2 5 2 1; 6 2 9 -2; -2 1 -2 1];
@@ -6,7 +13,6 @@ function pregunta4 ()
   q=[12;-4;17;-2];
   solucionQR(W,T,p,q);
   solucionGauss(W,T,p,q)
-
 
 end
 
@@ -39,8 +45,6 @@ function solucionQR(W,T,p,q)
   disp(norm((A*x-b),2));
 end
 
-
-
 function [Q,R]=metodoQR(A)
   [m,n]=size(A);
   U=zeros(m);
@@ -62,8 +66,6 @@ function [Q,R]=metodoQR(A)
   endwhile
   R=transpose(Q)*A;
 end
-
-
 
 function solucionGauss(W,T,p,q)
   % Definir las matrices A y b según enunciado
@@ -100,8 +102,3 @@ function solucionGauss(W,T,p,q)
   disp('ERROR =');
   disp(norm((A*x-b),2));
 end
-
-
-
-
-
