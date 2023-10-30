@@ -50,7 +50,6 @@ endfunction
   %error es el porcentaje de error alcanzado.
   %alpha es el valor óptimo de α.
 function [xk, error, iteraciones, alpha] = mhss(iterMax, W, T, p, q, tol)
-
   %Valor imaginario
   i = sqrt(-1);
 
@@ -111,6 +110,4 @@ function [xk, error, iteraciones, alpha] = mhss(iterMax, W, T, p, q, tol)
       end
 
   endfor
-
-
 endfunction

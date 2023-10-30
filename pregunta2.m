@@ -17,9 +17,9 @@ function pregunta2()
   [x, k, error] = PSHSS(iterMax, W, T, p, q, tol)
 endfunction
 
-%funcion que implementa el metodo PNHSS
-%recibe las iteraciones maximas, W, T, p, q (que son vectores) y la toleracia
-%retorna el valor x, cantidad de iteraciones y el %de error
+%Funcion que implementa el metodo PNHSS.
+%Recibe las iteraciones maximas, W, T, p, q (que son vectores) y la toleracia
+%Retorna el valor x, cantidad de iteraciones y el % de error
 function [x, k, error]= PNHSS(iterMax, W, T, p, q, tol)
   w = 1;
   a = 1;
@@ -52,9 +52,9 @@ function [x, k, error]= PNHSS(iterMax, W, T, p, q, tol)
   endfor
 endfunction
 
-%funcion que implementa el metodo PSHSS
-%recibe las iteraciones maximas, W, T, p, q (que son vectores) y la toleracia
-%retorna el valor x, cantidad de iteraciones y el %de error
+%Funcion que implementa el metodo PSHSS.
+%Recibe las iteraciones maximas, W, T, p, q (que son vectores) y la toleracia.
+%Retorna el valor x, cantidad de iteraciones y el % de error.
 function [x, k, error]= PSHSS(iterMax, W, T, p, q, tol)
   w = 1;
   x = zeros(length(p),1);

@@ -1,3 +1,6 @@
+%Función que calcula la solución a través del método de eliminación Gaussiana.
+%Recibe W, T, p, q y m.
+%Retorna la solución al sistema de ecuaciones planteado.
 function solucion_Gauss(W,T,p,q,m)
   % Definir las matrices A y b según enunciado
   A = W+T*i;

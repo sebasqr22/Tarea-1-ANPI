@@ -1,6 +1,6 @@
-%Función que llama al método iterativo MHSS
-%Retorna el llamado a la funcion MHSS
-
+%Funcion que implementa computacionalmente el método iterativo MHSS.
+%Recibe las iteraciones maximas, W, T, p, q (que son vectores) y la toleracia
+%Retorna el tama˜no de sistema de ecuaciones a resolver, la cantidad de iteraciones y el % de error.
 function [m, error, iteraciones] = mhss(iterMax, W, T, p, q, tol, m)
 
   %Valor imaginario

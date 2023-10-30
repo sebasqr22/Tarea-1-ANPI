@@ -1,3 +1,6 @@
+%Funcion que implementa computacionalmente el metodo PNHSS.
+%Recibe las iteraciones maximas, W, T, p, q (que son vectores) y la toleracia
+%Retorna el tama˜no de sistema de ecuaciones a resolver, la cantidad de iteraciones y el % de error.
 function [m, k, error]= pnhss(iterMax, W, T, p, q, tol, m)
   w = 1;
   a = 1;

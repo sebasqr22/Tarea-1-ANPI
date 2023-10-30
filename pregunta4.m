@@ -5,6 +5,9 @@
 % Pregunta4 Métodos de Factorización QR y Eliminación Gaussiana
 % Grupo: Sergio Rios, Sebastian Quesada, Luis Diego Araya , Andres Molina
 
+%Función que llama a los métodos para encontrar la solución del ejemplo de la tarea a traves de los métodos QR y eliminación Gaussiana.
+%No recibe parámetros.
+%Retorna la solución al problemma del ejemplo del la pregunta 4.
 function pregunta4 ()
   clc;
   W=[12 -2 6 -2; -2 5 2 1; 6 2 9 -2; -2 1 -2 1];
@@ -16,6 +19,9 @@ function pregunta4 ()
 
 end
 
+%Función que calcula la solución a través del método QR.
+%Recibe W, T, p, q y m.
+%Retorna la solución al sistema de ecuaciones planteado.
 function solucionQR(W,T,p,q)
   % Definir las matrices A y b según enunciado
   A=W+T*i;
@@ -45,6 +51,9 @@ function solucionQR(W,T,p,q)
   disp(norm((A*x-b),2));
 end
 
+%Función que calcula las matrices R y Q de A a través del método QR.
+%Recibe la matriz A, que es la matriz que queremos factorizar a través del método QR.
+%Retorna las matrices Q y R, que son la factorización de la matriz A con el método QR.
 function [Q,R]=metodoQR(A)
   [m,n]=size(A);
   U=zeros(m);
@@ -67,6 +76,9 @@ function [Q,R]=metodoQR(A)
   R=transpose(Q)*A;
 end
 
+%Función que calcula la solución a través del método de eliminación Gaussiana.
+%Recibe W, T, p, q y m.
+%Retorna la solución al sistema de ecuaciones planteado
 function solucionGauss(W,T,p,q)
   % Definir las matrices A y b según enunciado
   A = W+T*i;
