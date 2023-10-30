@@ -1,6 +1,6 @@
-%Función que llama al método iterativo MHSS
-%Retorna el llamado a la funcion MHSS
-
+%Función que llama al método iterativo MHSS para el ejemplo específico planteado en el enunciado de la tarea.
+%no recibe parámetros.
+%Retorna el llamado a la funcion MHSS.
 function pregunta3
   clc;
   % Se definen las matrices de ejemplo:
@@ -31,11 +31,24 @@ function pregunta3
   %Número de iteraciones máximas
   max_iter = 1000;
 
-  %Llamada a la función que aproxima la solución a través del método HSS
+  %Llamada a la función que aproxima la solución a través del método MHSS
   display("Método MHSS:")
   [xk, error, iteraciones, alpha] = mhss(iterMax, W, T, p, q, tol)
 endfunction
 
+%Función que implementa computacionalmente el método iterativo MHSS para aproximar la solución del sistema de ecuaciones Ax = b, planteado en el enunciado de la tarea.
+%Recibe como parámetros a iterMax, W, T, p, q, tol.
+  %iterMax es el número máximo de iteraciones a realizar.
+  %W es la matriz W del ejemplo.
+  %T es la matriz T del ejemplo.
+  %p es la matriz p del ejemplo.
+  %q es la matriz q del ejemplo.
+  %tol es el criterio de parada.
+%Retorna el valor aproxima la solución del problema, el número de iteraciones realizados y el porcentaje de error.
+  %x es la solución que aproxima el problema.
+  %k es el número de iteraciones realizadas.
+  %error es el porcentaje de error alcanzado.
+  %alpha es el valor óptimo de α.
 function [xk, error, iteraciones, alpha] = mhss(iterMax, W, T, p, q, tol)
 
   %Valor imaginario

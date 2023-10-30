@@ -1,3 +1,6 @@
+%Función que calcula la solución a través del método QR.
+%Recibe W, T, p, q y m.
+%Retorna la solución al sistema de ecuaciones planteado.
 function solucion_QR(W,T,p,q,m)
   % Definir las matrices A y b según enunciado
   A=W+T*i;
@@ -30,6 +33,9 @@ function solucion_QR(W,T,p,q,m)
 
 end
 
+%Función que calcula las matrices R y Q de A a través del método QR.
+%Recibe la matriz A, que es la matriz que queremos factorizar a través del método QR.
+%Retorna las matrices Q y R, que son la factorización de la matriz A con el método QR.
 function [Q,R]=metodo_QR(A)
   [r,n]=size(A);
   U=zeros(r);

@@ -1,4 +1,6 @@
-%Funcion principal que no recibe parametros
+%Función que llama al método iterativo PNHSS y PS*HSS para el ejemplo planteado en el enunciado de la tarea.
+%no recibe parámetros.
+%Retorna el llamado a las funciones PNHSS y PS*HSS.
 function pregunta2()
   clc;
   iterMax = 1000;
